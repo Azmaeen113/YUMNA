@@ -480,6 +480,10 @@ section.active { display: block; }
 
 /* ── EXPIRY PAGE ── */
 #expiry { background: var(--white); }
+.section-sub-title {
+  font-family: var(--font-bn); font-size: 24px; font-weight: 700;
+  margin-bottom: 24px;
+}
 
 .expiry-hero {
   background: var(--black); border-radius: 24px;
@@ -865,7 +869,9 @@ footer {
   .hero-container { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
   .hero-right { display: none; }
   .hero-stats { gap: 12px; }
-  .expiry-hero { grid-template-columns: 1fr; }
+  .expiry-hero { grid-template-columns: 1fr; gap: 28px; }
+  .expiry-hero-text h2 { font-size: 26px; }
+  .expiry-label { font-size: 36px; }
   .expiry-cards { grid-template-columns: 1fr; }
   .storage-grid { grid-template-columns: 1fr; }
   .safety-rules { grid-template-columns: 1fr; }
@@ -881,7 +887,25 @@ footer {
   .lang-btn span { display: none; }
   .hero-cta { flex-direction: column; }
   .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
-  .expiry-hero { padding: 28px; }
+  .expiry-hero { padding: 20px; gap: 24px; }
+  .expiry-hero-text h2 { font-size: 22px; word-break: break-word; }
+  .expiry-hero-text p { font-size: 13px; }
+  .expiry-demo { padding: 20px; }
+  .expiry-label { font-size: 28px; letter-spacing: 1px; }
+  .expiry-label-desc { font-size: 12px; }
+  .expiry-arrow { font-size: 24px; margin: 8px 0; }
+  .expiry-meaning { font-size: 13px; }
+  .expiry-tip-card { padding: 20px; }
+  .expiry-tip-card .tip-icon { font-size: 30px; margin-bottom: 10px; }
+  .expiry-tip-card h3 { font-size: 16px; }
+  .expiry-tip-card p { font-size: 13px; }
+  .storage-card { padding: 20px; gap: 14px; flex-direction: column; }
+  .storage-icon { width: 44px; height: 44px; font-size: 22px; border-radius: 12px; }
+  .storage-content h3 { font-size: 15px; }
+  .storage-content p { font-size: 12px; }
+  .section-sub-title { font-size: 19px; margin-bottom: 16px; }
+  .section-title { font-size: 24px; }
+  .section-desc { font-size: 13px; }
   .about-intro { padding: 24px; }
 }
 
@@ -1360,7 +1384,7 @@ section.active {
       </div>
     </div>
 
-    <h3 style="font-family:var(--font-bn);font-size:24px;font-weight:700;margin-bottom:24px;" id="exp-cards-title">মেয়াদ সংক্রান্ত গুরুত্বপূর্ণ তথ্য</h3>
+    <h3 class="section-sub-title" id="exp-cards-title">মেয়াদ সংক্রান্ত গুরুত্বপূর্ণ তথ্য</h3>
     <div class="expiry-cards">
       <div class="expiry-tip-card" style="background:#FFF4B8;border-color:#F5C518;">
         <div class="tip-icon"><i class="fi fi-rr-search" style="color:var(--black);"></i></div>
@@ -1379,7 +1403,7 @@ section.active {
       </div>
     </div>
 
-    <h3 style="font-family:var(--font-bn);font-size:24px;font-weight:700;margin-bottom:24px;" id="store-title">ওষুধ কীভাবে সংরক্ষণ করবেন</h3>
+    <h3 class="section-sub-title" id="store-title">ওষুধ কীভাবে সংরক্ষণ করবেন</h3>
     <div class="storage-grid">
       <div class="storage-card">
         <div class="storage-icon"><i class="fi fi-rr-thermometer-half"></i></div>
