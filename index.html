@@ -788,7 +788,7 @@ section.active { display: block; }
   box-shadow: var(--shadow-lg); border: 3px solid var(--yellow);
   margin: 0 auto 32px; display: inline-block;
 }
-#qr-canvas { display: block; margin: 0 auto; }
+#qr-image { display: block; margin: 0 auto; }
 .qr-caption {
   font-size: 15px; color: var(--gray-500); font-family: var(--font-bn);
   margin-bottom: 8px; line-height: 1.6;
@@ -1710,7 +1710,7 @@ section.active {
 
     <div style="text-align:center;">
       <div class="qr-box">
-        <canvas id="qr-canvas" width="220" height="220"></canvas>
+        <img id="qr-image" src="oshudh-ki-boss-qr.png" alt="QR Code - oshudhtakiboss.netlify.app" width="220" height="220" style="display:block;margin:0 auto;border-radius:8px;">
       </div>
 
       <div style="max-width:480px;margin:0 auto;">
@@ -1726,7 +1726,7 @@ section.active {
         </div>
 
         <p class="qr-caption" id="qr-caption">এই QR Code scan করলে সরাসরি এই website-এ আসা যাবে।</p>
-        <p class="qr-url">oshudh-ki-boss.netlify.app</p>
+        <p class="qr-url">oshudhtakiboss.netlify.app</p>
         <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
           <button onclick="downloadQR()" class="btn-primary" id="dl-btn"><i class="fi fi-rr-download"></i> QR Download করুন</button>
           <button onclick="window.print()" class="btn-secondary" id="print-btn"><i class="fi fi-rr-print"></i> Print করুন</button>
@@ -1772,34 +1772,13 @@ section.active {
 <!-- ══════════════════════════ SCRIPTS ════════════════════════════════════ -->
 <script>
 // ── QR Code Generator (Pure JS) ──────────────────────────────────────────
-// Minimal QR generator embedded directly
-(function() {
-  const QR_URL = "https://oshudh-ki-boss.netlify.app";
-
-  function drawQR() {
-    const canvas = document.getElementById('qr-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const size = 220;
-    canvas.width = size; canvas.height = size;
-
-    // Use Google Charts QR API via img
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => ctx.drawImage(img, 0, 0, size, size);
-    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(QR_URL)}&bgcolor=FFFFFF&color=111111&margin=2`;
-  }
-
-  window.downloadQR = function() {
-    const canvas = document.getElementById('qr-canvas');
-    const link = document.createElement('a');
-    link.download = 'oshudh-ki-boss-qr.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  };
-
-  document.addEventListener('DOMContentLoaded', drawQR);
-})();
+// QR Download function
+window.downloadQR = function() {
+  const link = document.createElement('a');
+  link.download = 'oshudh-ki-boss-qr.png';
+  link.href = 'oshudh-ki-boss-qr.png';
+  link.click();
+};
 
 // ── Navigation ──────────────────────────────────────────────────────────
 function showPage(id) {
@@ -1816,17 +1795,6 @@ function showPage(id) {
   const navEl = document.getElementById(navMap[id]);
   if (navEl) navEl.classList.add('active');
 
-  // Draw QR if needed
-  if (id === 'qr-page') {
-    setTimeout(() => {
-      const img = new Image();
-      const canvas = document.getElementById('qr-canvas');
-      const ctx = canvas.getContext('2d');
-      img.crossOrigin = 'anonymous';
-      img.onload = () => ctx.drawImage(img, 0, 0, 220, 220);
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent('https://oshudh-ki-boss.netlify.app')}&bgcolor=FFFFFF&color=111111&margin=2`;
-    }, 100);
-  }
 }
 
 function toggleMenu() {
