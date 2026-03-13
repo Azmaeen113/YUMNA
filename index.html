@@ -1728,7 +1728,8 @@ section.active {
         <p class="qr-caption" id="qr-caption">এই QR Code scan করলে সরাসরি এই website-এ আসা যাবে।</p>
         <p class="qr-url">oshudhtakiboss.netlify.app</p>
         <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <button onclick="downloadQR()" class="btn-primary" id="dl-btn"><i class="fi fi-rr-download"></i> QR Download করুন</button>
+          <button onclick="downloadQR('png')" class="btn-primary" id="dl-btn"><i class="fi fi-rr-download"></i> QR Download করুন</button>
+          <button onclick="downloadQR('svg')" class="btn-secondary" id="dl-svg-btn"><i class="fi fi-rr-vector-alt"></i> SVG Download করুন</button>
           <button onclick="window.print()" class="btn-secondary" id="print-btn"><i class="fi fi-rr-print"></i> Print করুন</button>
         </div>
       </div>
@@ -1763,7 +1764,7 @@ section.active {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 ওষুধটা কী বস? · Habiba Hussain</p>
+    <p>© 2026 ওষুধটা কী বস? · Habiba Hussain</p>
     <p style="font-size:12px;">Fellowship Project · Round 2</p>
   </div>
   <p class="footer-disclaimer" id="ft-disclaimer"><i class="fi fi-sr-triangle-warning"></i> এই website শুধুমাত্র সচেতনতা বৃদ্ধির উদ্দেশ্যে তৈরি। চিকিৎসার জন্য সবসময় qualified doctor বা pharmacist-এর পরামর্শ নিন।</p>
@@ -1773,10 +1774,11 @@ section.active {
 <script>
 // ── QR Code Generator (Pure JS) ──────────────────────────────────────────
 // QR Download function
-window.downloadQR = function() {
+window.downloadQR = function(format) {
+  const ext = format === 'svg' ? 'svg' : 'png';
   const link = document.createElement('a');
-  link.download = 'oshudh-ki-boss-qr.png';
-  link.href = 'oshudh-ki-boss-qr.png';
+  link.download = 'oshudh-ki-boss-qr.' + ext;
+  link.href = 'oshudh-ki-boss-qr.' + ext;
   link.click();
 };
 
@@ -1988,6 +1990,7 @@ const translations = {
     'poster-cta': 'Oshudh Ki Boss? | Know Your Medicine, Gain Health',
     'qr-caption': 'Scanning this QR Code takes you directly to this website.',
     'dl-btn': '<i class="fi fi-rr-download"></i> Download QR',
+    'dl-svg-btn': '<i class="fi fi-rr-vector-alt"></i> Download SVG',
     'print-btn': '<i class="fi fi-rr-print"></i> Print',
     'ft-desc': 'A medicine awareness initiative for the working people of Bangladesh. In simple language, free of charge.',
     'fl1': 'Home', 'fl2': 'Medicines', 'fl3': 'Expiry', 'fl4': 'Safety', 'fl5': 'FAQ',
@@ -2159,6 +2162,7 @@ const translations = {
     'poster-cta': 'ওষুধটা কী বস? | ওষুধ জানি, স্বাস্থ্য পাই',
     'qr-caption': 'এই QR Code স্ক্যান করলে সরাসরি এই ওয়েবসাইটে আসা যাবে।',
     'dl-btn': '<i class="fi fi-rr-download"></i> QR ডাউনলোড করুন',
+    'dl-svg-btn': '<i class="fi fi-rr-vector-alt"></i> SVG ডাউনলোড করুন',
     'print-btn': '<i class="fi fi-rr-print"></i> প্রিন্ট করুন',
     'ft-desc': 'বাংলাদেশের কর্মজীবী মানুষের জন্য ওষুধ সচেতনতার একটি উদ্যোগ। সহজ ভাষায়, বিনামূল্যে।',
     'fl1': 'হোম', 'fl2': 'ওষুধ', 'fl3': 'মেয়াদ', 'fl4': 'নিরাপত্তা', 'fl5': 'প্রশ্নোত্তর',
@@ -2330,6 +2334,7 @@ const translations = {
     'poster-cta': 'Oshudh Ki Boss? | Oshudh jani, health pai',
     'qr-caption': 'Ei QR Code scan korle directly ei website e asha jabe.',
     'dl-btn': '<i class="fi fi-rr-download"></i> QR Download korun',
+    'dl-svg-btn': '<i class="fi fi-rr-vector-alt"></i> SVG Download korun',
     'print-btn': '<i class="fi fi-rr-print"></i> Print korun',
     'ft-desc': 'Bangladesh er working class manusher jonno oshudh awareness initiative. Simple bhashay, free te.',
     'fl1': 'Home', 'fl2': 'Oshudh', 'fl3': 'Meyad', 'fl4': 'Safety', 'fl5': 'FAQ',
